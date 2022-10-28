@@ -46,7 +46,7 @@ class RecommandModel(torch.nn.Module):
         self.linear2 = torch.nn.Linear(in_features=128, out_features=256)
         self.linear3 = torch.nn.Linear(in_features=256, out_features=1)
 
-    def forward(self, user, movie, rating=None):
+    def forward(self, user, movie):
         user_embed = self.user_embed(user)
         movie_embed = self.movies_embed(movie)
         keep_going = torch.concat([user_embed, movie_embed], dim=1)
@@ -166,4 +166,4 @@ rms = mean_squared_error(y_true=target_rating_list, y_pred=model_output_list)
 print(f"🐋rms:{rms} ⭕")
 
 # 🐋rms:0.24484403927990694 ⭕
-#🐋rms:0.24438717761194173 ⭕
+# 🐋rms:0.24438717761194173 ⭕
